@@ -1,0 +1,39 @@
+<button><a routerLink="questions">Add questions</a></button>
+
+<p>Select filters</p>
+
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+
+  <!-- Category Checkboxes -->
+  <label>Category:</label><br />
+  <div formGroupName="category">
+    <label *ngFor="let cat of categories">
+      <input type="checkbox" [formControlName]="cat" />
+      {{ cat }}
+    </label>
+  </div>
+  <br />
+
+  <!-- Difficulty Checkboxes -->
+  <label>Difficulty:</label><br />
+  <div formGroupName="difficulty">
+    <label *ngFor="let diff of difficulties">
+      <input type="checkbox" [formControlName]="diff" />
+      {{ diff }}
+    </label>
+  </div>
+  <br />
+
+  <!-- Number of Questions Dropdown -->
+  <label>
+    Number of Questions:
+    <select formControlName="no">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+  </label>
+  <br /><br />
+
+  <button type="submit">Start Exam</button>
+</form>

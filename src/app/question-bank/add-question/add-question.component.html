@@ -1,0 +1,45 @@
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit()" >
+
+    <label for="qtitle">Question title</label>
+    <input name="qtitle" type="text" formControlName="qtitle">
+    <br>
+    <label for="qcategory">Question category</label>
+    <select name="" id="" >
+        <option value="Java">Java</option>
+        <option value="Angular">Angular</option>
+        <option value="SQL">SQL</option>
+    </select>
+    <br>
+
+    <label for="option1">Option 1</label>
+    <input name="option1" type="text" formControlName="option1">
+    <br>
+
+     <label for="option2">Option 2</label>
+    <input name="option2" type="text" formControlName="option2">
+    <br>
+
+     <label for="option3">Option 3</label>
+    <input name="option3" type="text" formControlName="option3">
+    <br>
+
+     <label for="option4">Option 4</label>
+    <input name="option4" type="text" formControlName="option4">
+    <br>
+
+     <label for="qanswer">Question answer</label>
+    <input name="qanswer" type="text" formControlName="qanswer">
+    <br>
+
+
+    <label for="qcategory">Question Difficulty</label>
+    <select name="" id="">
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+    </select>
+    <br>
+    <button type="submit">Add question</button>
+
+</form>
+
