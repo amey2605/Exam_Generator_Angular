@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { ExamServiceService } from '../Services/exam-service.service';
 import { CorrectAnswer, Questions } from '../Model/Filterdata.model';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-display-exam',
   standalone: true,
-  imports: [NgFor,FormsModule,NgIf],
+  imports: [NgFor,FormsModule,NgIf,RouterLink,CommonModule],
   templateUrl: './display-exam.component.html',
   styleUrl: './display-exam.component.css'
 })

@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { QuestionType } from '../Model/questiondata.model';
 import { Observable } from 'rxjs';
@@ -8,21 +8,29 @@ import { Observable } from 'rxjs';
 })
 export class QuestionServiceService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  AllQuestions!:QuestionType[];
-  
+  AllQuestions!: QuestionType[];
 
-  AddQuestion(FormData:QuestionType):void{
-   this.http.post<QuestionType>('http://localhost:8080/questions', FormData).subscribe((res)=>{
-    console.log(res)
-   })
+  // ✅ Define base API URL
+  private baseApiUrl = 'https://044c-2401-4900-1c16-ab9-c96d-17e0-572c-884c.ngrok-free.app';
 
+  // ✅ Construct full endpoint URLs
+  private questionsUrl = `${this.baseApiUrl}/questions`;
+
+  AddQuestion(FormData: QuestionType): void {
+    this.http.post<QuestionType>(this.questionsUrl, FormData).subscribe((res) => {
+      console.log(res);
+    });
   }
 
-  getAllQuestions():Observable<QuestionType[]>{
-    
-     return this.http.get<QuestionType[]>('http://localhost:8080/questions')
-  }
+  getAllQuestions(): Observable<QuestionType[]> {
 
+     const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'ngrok-skip-browser-warning': 'true'
+    });
+
+    return this.http.get<QuestionType[]>(this.questionsUrl+'/getallquestions',{headers});
+  }
 }
